@@ -8,11 +8,13 @@ const forecast = (lat, long, cb) => {
     } else if (body.error) {
       cb("Unable to find location: Wrong coordinates", undefined);
     } else {
-      const { temperature, feelslike } = body.current;
+      const { temperature, feelslike, precip, wind_speed } = body.current;
       const weatherDescription = body.current.weather_descriptions[0];
       cb(undefined, {
         temperature,
         feelslike,
+        precip,
+        wind_speed,
         weatherDescription: weatherDescription,
       });
     }
